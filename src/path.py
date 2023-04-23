@@ -1,5 +1,3 @@
-import numpy as np
-
 class Path:
     def __init__(self, map_size, map):
         self.__output_data = {"length": 0, "path": [], "drop": 0}
@@ -9,7 +7,7 @@ class Path:
     def get_path(self) -> dict:      
         longest_path = []
         m, n = self.__map_size
-        max_drop = -np.inf
+        max_drop = float('-inf')
         
         for i in range(m):
             for j in range(n):
@@ -38,9 +36,9 @@ class Path:
             return path
         
         # Adding map[i, j] to the path and apply the  same logic recursively in all directions
-        up = self.deep_first_search(i - 1, j, path + [self.__map[(i, j)]])
-        down = self.deep_first_search(i + 1, j, path + [self.__map[(i, j)]])
-        right = self.deep_first_search(i, j + 1, path + [self.__map[(i, j)]])
-        left = self.deep_first_search(i, j - 1, path + [self.__map[(i, j)]])
+        up = self.deep_first_search(i - 1, j, path + [self.__map[i][j]])
+        down = self.deep_first_search(i + 1, j, path + [self.__map[i][j]])
+        right = self.deep_first_search(i, j + 1, path + [self.__map[i][j]])
+        left = self.deep_first_search(i, j - 1, path + [self.__map[i][j]])
         
         return max(up, down, right, left, key=len)

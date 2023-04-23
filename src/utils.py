@@ -1,7 +1,5 @@
-import numpy as np 
-
 class Utils:
-    def parse_data(self, map_path: str) -> np.array:
+    def parse_data(self, map_path: str) -> list:
         size = []
         output_array = []
         with open(map_path, 'r') as f:
@@ -11,4 +9,4 @@ class Utils:
                     size.extend(line)
                 else:
                     output_array.append(line)
-        return (size, np.array(output_array))
+        return (size, output_array)
