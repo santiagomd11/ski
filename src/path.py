@@ -11,6 +11,7 @@ class Path:
         
         for i in range(m):
             for j in range(n):
+                # find longest path for each value in matrix with a modified version of dfs
                 path = self.deep_first_search(i, j, [])
                 steep = path[0] - path[-1]
                 if len(path) >= len(longest_path):
@@ -18,6 +19,7 @@ class Path:
                         longest_path = path
                         max_drop = steep
         
+        # parse data on ouput
         self.__output_data["length"] = len(longest_path)
         self.__output_data["path"] = longest_path
         self.__output_data["drop"] = max_drop
