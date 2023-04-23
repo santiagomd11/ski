@@ -27,7 +27,8 @@ class Path:
     
     def deep_first_search(self, i: int, j: int, path: list) -> list:        
         # First check to see if cell is out of bounds
-        cell_out_of_bounds = i >= self.__map_size[0] or j >= self.__map_size[1]
+        cell_out_of_bounds = i >= self.__map_size[0] or j >= self.__map_size[1] \
+                             or i < 0 or j < 0
         
         # Check if it's not decreasing
         not_decreasing = cell_out_of_bounds or \
